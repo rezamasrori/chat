@@ -17,6 +17,7 @@ io.on('connection' , (socket) => {
             console.log("error" , error)  
             return callback(error)
         }
+        
         socket.emit('message' , {user: 'admin' , text:`${user.name} , welcome to the room ${user.room}`})
         socket.broadcast.to(user.room).emit('message' , {user : 'admin' , text :`${user.name} , has joinend!`})
         socket.join(user.room);
